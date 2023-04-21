@@ -1,0 +1,10 @@
+/*
+  GolosText
+  variable font weight
+*/
+@font-face {
+  font-family: 'GolosText';
+  src: url('../assets/fonts/GolosText.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
