@@ -6,12 +6,13 @@ import { FontSettings } from "../types/font.type";
  * @param baseSettings  Base font settings
  * @returns  Merged font settings
  */
-const getFontStyle = (customSettings: Partial<FontSettings>, baseSettings : FontSettings) => ({
-    fontSize: customSettings?.size ?? baseSettings.size,
-    fontFamily: customSettings?.family ?? baseSettings.family,
-    fontWeight: customSettings?.weight ?? baseSettings.weight,
-    textShadow: customSettings?.shadow ?? baseSettings.shadow,
-    color: customSettings?.color ?? baseSettings.color,
+const getFontStyle = (customSettings?: Partial<FontSettings>, baseSettings?: FontSettings) => ({
+    fontSize: customSettings?.size ?? baseSettings?.size,
+    fontFamily: customSettings?.family ?? baseSettings?.family,
+    fontWeight: customSettings?.weight ?? baseSettings?.weight,
+    textShadow: customSettings?.shadow ?? baseSettings?.shadow,
+    color: customSettings?.color ?? baseSettings?.color,
+    opacity: customSettings?.opacity ?? baseSettings?.opacity,
 });
 
 export { getFontStyle };

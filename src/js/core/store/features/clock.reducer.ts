@@ -51,7 +51,7 @@ export interface ClockState {
 }
 
 const initState: ClockState = {
-    clockType: ClockType.Vertical,
+    clockType: ClockType.Circle,
     clockProperty: {
         base: {
             font: {

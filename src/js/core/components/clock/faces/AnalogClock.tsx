@@ -18,19 +18,7 @@ const AnalogClock: FC<AnalogClockProps> = ({ time }) => {
 
     const baseSettings = useSelector((state: RootState) => state.clock.clockProperty.base);
     const settings = useSelector((state: RootState) => state.clock.clockProperty.analog);
-
-    // const dotColor = useSelector((state: RootState) => state.clock.clockProperty.analog.dotColor);
-    // const borderColor = useSelector((state: RootState) => state.clock.clockProperty.analog.borderColor);
-
-    // const hourHandSettings = useSelector((state: RootState) => state.clock.clockProperty.analog.hourHand);
-    // const minuteHandSettings = useSelector((state: RootState) => state.clock.clockProperty.analog.minuteHand);
-    // const secondHandSettings = useSelector((state: RootState) => state.clock.clockProperty.analog.secondHand);
-
-    // const majorGraduationSettings = useSelector((state: RootState) => state.clock.clockProperty.analog.graduations.major);
-    // const minorGraduationSettings = useSelector((state: RootState) => state.clock.clockProperty.analog.graduations.minor);
-
-    // time.hour = 8;
-    // time.minute = 20;
+    
     return (
         <Box
             position='relative'

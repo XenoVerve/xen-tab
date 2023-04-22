@@ -1,9 +1,23 @@
 import { Center, CircularProgress, Flex, Text } from "@chakra-ui/react";
 import { FC } from "react";
 import { useSelector } from "react-redux";
+import { getFontStyle } from "../../../helpers/fonts.helper";
 import { RootState } from "../../../store/store";
+import { FontSettings } from "../../../types/font.type";
 import TimeSeparator from "../TimeSeparator";
 import { ClockProps } from "../types/clock.type";
+
+/**
+ * Get font properties from font settings for the elements
+ * @param font  FontSettings
+ * @returns Font properties
+ */
+const getFontProps =(font?: Partial<FontSettings>) => ({
+        fontSize: font?.size,
+        fontWeight: font?.weight,
+        color: font?.color,
+        fontFamily: font?.family,
+})
 
 /**
  * Circle Clock Face Component
@@ -13,7 +27,11 @@ const CircleClock: FC<ClockProps> = ({ time }) => {
     const settings = useSelector((state: RootState) => state.clock.clockProperty.circle);
     const fontSettings = useSelector((state: RootState) => state.clock.clockProperty.circle.font);
 
-    const fontSize = settings.showSeconds ? fontSettings?.sizeWithSeconds ?? fontSettings?.size : fontSettings?.size;
+    const baseFontSize = settings.showSeconds ? fontSettings?.sizeWithSeconds ?? fontSettings?.size : fontSettings?.size;
+
+    const hourFont = getFontStyle(settings.hourFont);
+    const minuteFont = getFontStyle(settings.minuteFont);
+    const secondsFont = getFontStyle(settings.secondsFont);
 
     return (
         <CircularProgress
@@ -29,7 +47,7 @@ const CircleClock: FC<ClockProps> = ({ time }) => {
                 position='absolute'
                 top='50%'
                 left='50%'
-                fontSize={fontSize}
+                fontSize={baseFontSize}
                 fontWeight={fontSettings?.weight}
                 color={fontSettings?.color ?? settings.trackColor}
                 fontFamily={fontSettings?.family}
@@ -38,34 +56,17 @@ const CircleClock: FC<ClockProps> = ({ time }) => {
                 transform='translate(-50%, -50%)'
             >
                 <Center>
-                    <Text
-                        fontSize={settings.hourFont?.size}
-                        fontFamily={settings.hourFont?.family}
-                        fontWeight={settings.hourFont?.weight}
-                        color={settings.hourFont?.color}
-                    >{ time.hour.toString().padStart(2, '0') }</Text>
+                    <Text {...hourFont}>{ time.hour.toString().padStart(2, '0') }</Text>
                 </Center>
                 <TimeSeparator isFlashing={settings.flashingDots} />
                 <Center>
-                    <Text
-                        fontSize={settings.minuteFont?.size}
-                        fontFamily={settings.minuteFont?.family}
-                        fontWeight={settings.minuteFont?.weight}
-                        color={settings.minuteFont?.color}
-                    >{ time.minute.toString().padStart(2, '0') }</Text>
+                    <Text {...minuteFont}>{ time.minute.toString().padStart(2, '0') }</Text>
                 </Center>
                 {
                     settings.showSeconds && (
                         <>
                             <TimeSeparator isFlashing={settings.flashingDots} />
-                            <Center
-                                fontSize={settings.secondsFont?.size}
-                                fontFamily={settings.secondsFont?.family}
-                                fontWeight={settings.secondsFont?.weight}
-                                color={settings.secondsFont?.color}
-                            >
-                                { time.second.toString().padStart(2, '0') }
-                            </Center>
+                            <Center {...secondsFont}> { time.second.toString().padStart(2, '0') }</Center>
                         </>
                     )
                 }
