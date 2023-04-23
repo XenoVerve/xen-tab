@@ -5,11 +5,11 @@ import { FontSettings } from "../../../types/font.type";
 declare type Token<CSSType, ThemeKey = unknown> = ThemeKey extends keyof ThemeTypings ? ResponsiveValue<CSSType | ThemeTypings[ThemeKey]> : ResponsiveValue<CSSType>;
 
 export enum ClockType {
-    Digital,
-    Analog,
-    Circle,
-    Vertical,
-    Indented,
+    Digital = "Digital",
+    Analog = "Analog",
+    Circle = "Circle",
+    Vertical = "Vertical",
+    Indented = "Indented",
 }
 
 export type AnalogClockHandSettings = {

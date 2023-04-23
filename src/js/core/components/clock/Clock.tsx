@@ -7,6 +7,7 @@ import AnalogClock from "./faces/AnalogClock";
 import { useInterval } from "@chakra-ui/react";
 import CircleClock from "./faces/CircleClock";
 import VerticalClock from "./faces/VerticalClock";
+import IndentedClock from "./faces/IndentedClock";
 
 const defaultTime = new Date();
 
@@ -30,18 +31,9 @@ const Clock: FC = ({  }) => {
      * @param type The clock type
      */
     const getClockType = (type: ClockType): ReactElement => {
-        switch (type) {
-            case ClockType.Digital:
-                return <DigitalClock time={time} />
-            case ClockType.Analog:
-                return <AnalogClock time={time} />
-            case ClockType.Circle:
-                return <CircleClock time={time} />
-            case ClockType.Vertical:
-                return <VerticalClock time={time} />
-            default:
-                return <DigitalClock time={time} />
-        }
+        const ClockElement = {[ClockType.Digital]: { comp: DigitalClock}, [ClockType.Analog]: { comp: AnalogClock}, [ClockType.Circle]: { comp: CircleClock}, [ClockType.Vertical]: { comp: VerticalClock}, [ClockType.Indented]: { comp: IndentedClock, props: { a: '1' } }};
+        const { comp: Component } = ClockElement[type];
+        return <Component time={time}  />;
     }
 
     return getClockType(clockType);

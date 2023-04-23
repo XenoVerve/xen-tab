@@ -51,7 +51,7 @@ export interface ClockState {
 }
 
 const initState: ClockState = {
-    clockType: ClockType.Circle,
+    clockType: ClockType.Indented,
     clockProperty: {
         base: {
             font: {

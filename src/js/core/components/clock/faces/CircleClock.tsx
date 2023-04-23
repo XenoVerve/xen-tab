@@ -8,18 +8,6 @@ import TimeSeparator from "../TimeSeparator";
 import { ClockProps } from "../types/clock.type";
 
 /**
- * Get font properties from font settings for the elements
- * @param font  FontSettings
- * @returns Font properties
- */
-const getFontProps =(font?: Partial<FontSettings>) => ({
-        fontSize: font?.size,
-        fontWeight: font?.weight,
-        color: font?.color,
-        fontFamily: font?.family,
-})
-
-/**
  * Circle Clock Face Component
  */
 const CircleClock: FC<ClockProps> = ({ time }) => {
