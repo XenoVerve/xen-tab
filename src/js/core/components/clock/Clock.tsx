@@ -8,6 +8,7 @@ import { useInterval } from "@chakra-ui/react";
 import CircleClock, { CircleClockProps } from "./faces/CircleClock";
 import VerticalClock, { VerticalClockProps } from "./faces/VerticalClock";
 import IndentedClock from "./faces/IndentedClock";
+import { BlurredDigitalClockProps } from "./faces/BlurredDigitalClock";
 
 /**
  * ClockTypeMap - A map of clock types to their respective components
@@ -33,6 +34,10 @@ type ClockTypeMap = {
         comp: ComponentType<VerticalClockProps>,
         props?: Partial<VerticalClockProps>
     },
+    [ClockType.BlurredDigital]: {
+        comp: ComponentType<BlurredDigitalClockProps>,
+        props?: Partial<BlurredDigitalClockProps>,
+    },
 };
 
 const clockTypeMap: ClockTypeMap = {
@@ -50,6 +55,9 @@ const clockTypeMap: ClockTypeMap = {
     },
     [ClockType.Indented]: {
         comp: IndentedClock,
+    },
+    [ClockType.BlurredDigital]: {
+        comp: DigitalClock,
     },
 };
 

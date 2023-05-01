@@ -10,6 +10,7 @@ export enum ClockType {
     Circle = "Circle",
     Vertical = "Vertical",
     Indented = "Indented",
+    BlurredDigital = "BlurredDigital",
 }
 
 export type AnalogClockHandSettings = {

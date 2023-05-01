@@ -52,7 +52,7 @@ export interface ClockState {
 }
 
 const initState: ClockState = {
-    clockType: ClockType.Indented,
+    clockType: ClockType.BlurredDigital,
     clockProperty: {
         base: {
             font: {
