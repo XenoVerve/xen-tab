@@ -1,6 +1,6 @@
-# 🌟 XenoTab: The Ultimate New Tab Experience 🌟
+# 🌟 XenTab: The Ultimate New Tab Experience 🌟
 
-Welcome to the XenoTab repository! XenoTab is a feature-rich, clean, and modern browser extension that aims to revolutionize the way you interact with new tabs. Say goodbye to the dull and uneventful default new tab pages and say hello to endless customization and functionality.
+Welcome to the XenTab repository! XenTab is a feature-rich, clean, and modern browser extension that aims to revolutionize the way you interact with new tabs. Say goodbye to the dull and uneventful default new tab pages and say hello to endless customization and functionality.
 
 ## Key Features
 - ⏰ **Time & Weather**: Stay informed with accurate local time and weather information.
@@ -10,7 +10,7 @@ Welcome to the XenoTab repository! XenoTab is a feature-rich, clean, and modern 
 - 🛠️ **Customization Galore**: Tailor the appearance and features of your new tab page with dozens of customizable settings.
 - ...and much more!
 
-Get ready to experience a new world of convenience, productivity, and personalization with XenoTab, the ultimate new tab extension. Happy browsing!
+Get ready to experience a new world of convenience, productivity, and personalization with XenTab, the ultimate new tab extension. Happy browsing!
 
 <hr>
 
