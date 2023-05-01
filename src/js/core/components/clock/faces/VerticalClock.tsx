@@ -6,10 +6,14 @@ import { RootState } from "../../../store/store";
 import CenterView from "../../layout/CenterView";
 import { ClockProps } from "../types/clock.type";
 
+export interface VerticalClockProps extends ClockProps {
+    indented? : boolean;
+}
+
 /**
  * VerticalClock - A vertical clock face
  */
-const VerticalClock: FC<ClockProps> = ({ time }) => {
+const VerticalClock: FC<VerticalClockProps> = ({ time }) => {
 
     const baseSettings = useSelector((state: RootState) => state.clock.clockProperty.base);
     const settings = useSelector((state: RootState) => state.clock.clockProperty.vertical);

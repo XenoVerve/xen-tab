@@ -1,16 +1,58 @@
-import {FC, ReactElement, useState} from "react";
-import DigitalClock from "./faces/DigitalClock";
-import {ClockType, Time} from "./types/clock.type";
+import {ComponentType, FC, FunctionComponent, ReactElement, useState} from "react";
+import DigitalClock, { DigitalClockProps } from "./faces/DigitalClock";
+import {ClockProps, ClockType, Time} from "./types/clock.type";
 import { RootState } from "../../store/store";
 import { useSelector } from "react-redux";
-import AnalogClock from "./faces/AnalogClock";
+import AnalogClock, { AnalogClockProps } from "./faces/AnalogClock";
 import { useInterval } from "@chakra-ui/react";
-import CircleClock from "./faces/CircleClock";
-import VerticalClock from "./faces/VerticalClock";
-import IndentedClock from "./faces/IndentedClock";
+import CircleClock, { CircleClockProps } from "./faces/CircleClock";
+import VerticalClock, { VerticalClockProps } from "./faces/VerticalClock";
+
+type ClockTypeMap = {
+    [ClockType.Analog]: {
+        comp: ComponentType<AnalogClockProps>,
+        props?: Partial<AnalogClockProps>
+    },
+    [ClockType.Digital]: {
+        comp: ComponentType<DigitalClockProps>,
+        props?: Partial<AnalogClockProps>
+    },
+    [ClockType.Circle]: {
+        comp: ComponentType<CircleClockProps>,
+        props?: Partial<AnalogClockProps>
+    },
+    [ClockType.Vertical]: {
+        comp: ComponentType<VerticalClockProps>,
+        props?: Partial<AnalogClockProps>
+    },
+    [ClockType.Indented]: {
+        comp: ComponentType<VerticalClockProps>,
+        props?: Partial<VerticalClockProps>
+    },
+};
+
+const clockTypeMap: ClockTypeMap = {
+    [ClockType.Analog]: {
+        comp: AnalogClock,
+    },
+    [ClockType.Digital]: {
+        comp: DigitalClock,
+    },
+    [ClockType.Circle]: {
+        comp: CircleClock,
+    },
+    [ClockType.Vertical]: {
+        comp: VerticalClock,
+    },
+    [ClockType.Indented]: {
+        comp: VerticalClock,
+        props: {
+            indented: true
+        }
+    },
+};
 
 const defaultTime = new Date();
-
 
 const Clock: FC = ({  }) => {
     const [time, setTime] = useState<Time>({ hour: defaultTime.getHours(), minute: defaultTime.getMinutes() , second: defaultTime.getSeconds() })
@@ -30,10 +72,10 @@ const Clock: FC = ({  }) => {
      * Get the clock type
      * @param type The clock type
      */
-    const getClockType = (type: ClockType): ReactElement => {
-        const ClockElement = {[ClockType.Digital]: { comp: DigitalClock}, [ClockType.Analog]: { comp: AnalogClock}, [ClockType.Circle]: { comp: CircleClock}, [ClockType.Vertical]: { comp: VerticalClock}, [ClockType.Indented]: { comp: IndentedClock, props: { a: '1' } }};
-        const { comp: Component } = ClockElement[type];
-        return <Component time={time}  />;
+    const getClockType = (type: ClockType) => {
+        const ClockElement = clockTypeMap[type] ?? clockTypeMap[ClockType.Digital];
+        const { comp: Component, props } = ClockElement;
+        return <Component time={time} {...props} />;
     }
 
     return getClockType(clockType);

@@ -7,10 +7,14 @@ import { FontSettings } from "../../../types/font.type";
 import TimeSeparator from "../TimeSeparator";
 import { ClockProps } from "../types/clock.type";
 
+export interface CircleClockProps extends ClockProps {
+
+}
+
 /**
  * Circle Clock Face Component
  */
-const CircleClock: FC<ClockProps> = ({ time }) => {
+const CircleClock: FC<CircleClockProps> = ({ time }) => {
 
     const settings = useSelector((state: RootState) => state.clock.clockProperty.circle);
     const fontSettings = useSelector((state: RootState) => state.clock.clockProperty.circle.font);

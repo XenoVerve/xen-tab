@@ -6,7 +6,7 @@ import { timeLabels } from "../clock.vars";
 import { TimeGraduation, TimeLabel, TimeLabelProps } from "../clockLabels";
 import { ClockProps } from "../types/clock.type";
 
-interface AnalogClockProps extends ClockProps {
+export interface AnalogClockProps extends ClockProps {
 }
 
 

@@ -4,7 +4,7 @@ import {ClockProps} from "../types/clock.type";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
 
-interface DigitalClockProps extends ClockProps {
+export interface DigitalClockProps extends ClockProps {
     useTextShadow?: boolean;
 }
 
