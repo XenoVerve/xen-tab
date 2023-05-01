@@ -2,19 +2,18 @@ import { Box, Center, Divider, Heading, Text } from "@chakra-ui/react";
 import { FC } from "react";
 import { useSelector } from "react-redux";
 import { getFontStyle } from "../../../helpers/fonts.helper";
+import clockReducer from "../../../store/features/clock.reducer";
 import { RootState } from "../../../store/store";
-import CenterView from "../../layout/CenterView";
-import { ClockProps } from "../types/clock.type";
+import { ClockProps, IndentedClockSettings } from "../types/clock.type";
 
 export interface VerticalClockProps extends ClockProps {
-    indented? : boolean;
+    indentationSettings?: IndentedClockSettings
 }
 
 /**
  * VerticalClock - A vertical clock face
  */
-const VerticalClock: FC<VerticalClockProps> = ({ time }) => {
-
+const VerticalClock: FC<VerticalClockProps> = ({ time, indentationSettings }) => {
     const baseSettings = useSelector((state: RootState) => state.clock.clockProperty.base);
     const settings = useSelector((state: RootState) => state.clock.clockProperty.vertical);
 
@@ -43,10 +42,12 @@ const VerticalClock: FC<VerticalClockProps> = ({ time }) => {
                 </Text>
                 <Text
                     {...minuteFontStyle}
+                    position="relative"
                     lineHeight={0.8}
                     mt={settings.timeSpacing}
                     mb={settings.marginBottom}
                     letterSpacing={settings.letterSpacing}
+                    left={indentationSettings?.indentationLeft}
                 >
                     { time.minute.toString().padStart(2, '0') }
                 </Text>

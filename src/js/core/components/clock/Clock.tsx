@@ -1,13 +1,17 @@
-import {ComponentType, FC, FunctionComponent, ReactElement, useState} from "react";
+import {ComponentType, FC, useState} from "react";
 import DigitalClock, { DigitalClockProps } from "./faces/DigitalClock";
-import {ClockProps, ClockType, Time} from "./types/clock.type";
+import { ClockType, Time} from "./types/clock.type";
 import { RootState } from "../../store/store";
 import { useSelector } from "react-redux";
 import AnalogClock, { AnalogClockProps } from "./faces/AnalogClock";
 import { useInterval } from "@chakra-ui/react";
 import CircleClock, { CircleClockProps } from "./faces/CircleClock";
 import VerticalClock, { VerticalClockProps } from "./faces/VerticalClock";
+import IndentedClock from "./faces/IndentedClock";
 
+/**
+ * ClockTypeMap - A map of clock types to their respective components
+ */
 type ClockTypeMap = {
     [ClockType.Analog]: {
         comp: ComponentType<AnalogClockProps>,
@@ -45,15 +49,15 @@ const clockTypeMap: ClockTypeMap = {
         comp: VerticalClock,
     },
     [ClockType.Indented]: {
-        comp: VerticalClock,
-        props: {
-            indented: true
-        }
+        comp: IndentedClock,
     },
 };
 
 const defaultTime = new Date();
 
+/**
+ * Clock - The clock component that renders the active clock face
+ */
 const Clock: FC = ({  }) => {
     const [time, setTime] = useState<Time>({ hour: defaultTime.getHours(), minute: defaultTime.getMinutes() , second: defaultTime.getSeconds() })
 

@@ -30,6 +30,10 @@ export type AnalogClockGraduationSettings = {
     font?: FontSettings
 }
 
+export type IndentedClockSettings = {
+    indentationLeft: string,
+}
+
 export type ClockFaceProps = {
     font?: Partial<FontSettings>,
     divider?: Partial<ClockDivider>,

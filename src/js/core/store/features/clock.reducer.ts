@@ -1,6 +1,6 @@
 import * as CSS from 'csstype';
 import { createSlice } from "@reduxjs/toolkit";
-import { AnalogClockGraduationSettings, AnalogClockHandSettings, BaseClockFaceProps, ClockDivider, ClockFaceProps, ClockType } from "../../components/clock/types/clock.type";
+import { AnalogClockGraduationSettings, AnalogClockHandSettings, BaseClockFaceProps, ClockDivider, ClockFaceProps, ClockType, IndentedClockSettings } from "../../components/clock/types/clock.type";
 import {  FontFamily, FontSettings, FontWeight } from "../../types/font.type";
 import { ThemeTypings, ResponsiveValue } from '@chakra-ui/react';
 
@@ -46,7 +46,8 @@ export interface ClockState {
             timeSpacing: string,
             letterSpacing: number,
             marginBottom: number,
-        }
+        },
+        indented: IndentedClockSettings,
     }
 }
 
@@ -152,6 +153,9 @@ const initState: ClockState = {
             },
             letterSpacing: 0,
             marginBottom: 8,
+        },
+        indented: {
+            indentationLeft: '50%',
         }
     },
 };
